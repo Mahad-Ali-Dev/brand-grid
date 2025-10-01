@@ -1,103 +1,197 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import Services from "@/components/services";
+import WorldwideStats from "@/components/WorldwideStats";
+import BusinessGoals from "@/components/BusinessGoals";
+import ClientTestimonials from "@/components/ClientTestimonials";
+import LatestProjects from "@/components/LatestProjects";
+import TechStack from "@/components/TechStack";
 
-export default function Home() {
+const MotionLink = motion(Link);
+
+const Hero = () => {
+  const images = ["/main-image 2.png", "/main-image.png"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // 🔹 Animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, rotateX: -15, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 100, damping: 12, duration: 0.8 },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, x: -100, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 80, damping: 15, duration: 1 },
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 120, damping: 10, delay: 0.8 },
+    },
+    hover: { scale: 1.05, y: -2, transition: { type: "spring", stiffness: 400, damping: 10 } },
+    tap: { scale: 0.95, transition: { duration: 0.1 } },
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-gray-50 h-[92vh] via-white to-blue-50 py-12 overflow-hidden relative">
+        {/* Background animations */}
+        <div className="absolute inset-0">
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-blue-200/20 to-purple-200/20 rounded-full blur-xl"
+          />
+          <motion.div
+            animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-10 left-10 w-24 h-24 bg-gradient-to-r from-pink-200/20 to-yellow-200/20 rounded-full blur-xl"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <motion.div
+          className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-10 relative z-10"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          {/* Left Content */}
+          <motion.div variants={textVariants}>
+            <motion.h1 className="text-2xl md:text-5xl font-extrabold text-black leading-tight">
+              <motion.span className="whitespace-nowrap inline-block">Amazon & E-Commerce</motion.span>
+              <br />
+              <motion.span className="inline-block bg-gradient-to-r from-gray-700 to-gray-700 bg-clip-text text-transparent">
+                Designs That Convert
+              </motion.span>
+            </motion.h1>
+
+            <motion.p className="mt-4 text-lg font-semibold text-gray-700">
+              Motivate to click! Inspire to purchase! Be the best in your niche!
+            </motion.p>
+
+            <motion.p className="mt-2 text-gray-600">
+              High-converting Amazon Listing Images, A+ Content (EBC), Brand
+              Stores & Infographics — designed to boost CTR, increase sales, and
+              build brand trust. We also craft Shopify & custom e-commerce
+              websites, turning browsers into loyal customers.
+            </motion.p>
+
+            {/* ✅ Fixed Buttons */}
+            <motion.div
+              className="mt-6 flex space-x-4"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <MotionLink
+                href="/contact"
+                className="px-6 py-3 bg-gradient-to-r from-black to-gray-800 text-white font-medium rounded-lg shadow-lg relative overflow-hidden group"
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <motion.div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Send Request</span>
+              </MotionLink>
+
+              <MotionLink
+                href="/portfolio"
+                className="px-6 py-3 border-2 border-gray-400 text-gray-800 font-medium rounded-lg hover:border-gray-500 hover:text-gray-600 transition-all duration-300 relative overflow-hidden group"
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <motion.div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Portfolio</span>
+              </MotionLink>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content (image slider) */}
+          <motion.div
+            className="relative flex justify-center w-full h-96"
+            variants={itemVariants}
+          >
+            <AnimatePresence mode="wait">
+              {images.map(
+                (img, index) =>
+                  index === currentIndex && (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8, rotateY: 90, x: 100 }}
+                      animate={{ opacity: 1, scale: 1, rotateY: 0, x: 0 }}
+                      exit={{ opacity: 0, scale: 0.8, rotateY: -90, x: -100 }}
+                      transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20 }}
+                      className="absolute"
+                      whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5, transition: { duration: 0.3 } }}
+                    >
+                      <Image
+                        src={img}
+                        alt="Amazon Listing Example"
+                        width={280}
+                        height={400}
+                        className="object-contain rounded-xl shadow-2xl"
+                      />
+                    </motion.div>
+                  )
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Tech Stack Section Placeholder */}
+      <section className="bg-gradient-to-br from-gray-900 via-black to-gray-900 py-16 relative overflow-hidden">
+        {/* You can insert your Tech Stack code here */}
+      </section>
+
+      {/* Other Sections */}
+      <TechStack />
+      <WorldwideStats />
+      <Services />
+      <BusinessGoals />
+      <ClientTestimonials />
+      <LatestProjects />
+    </>
   );
-}
+};
+
+export default Hero;
