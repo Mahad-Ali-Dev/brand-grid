@@ -54,9 +54,9 @@ export default function AboutPage() {
               </div>
             </div>
             <h2 className="text-2xl font-semibold">Husnain Hanif</h2>
-            <p className="text-indigo-600 mb-4">Founder & CEO</p>
+            <p className="text-indigo-600 mb-4">Founder &amp; CEO</p>
             <p className="text-gray-700 leading-relaxed">
-              Hi, I’m Husnain — the creative mind behind Brand Grid. As the founder and lead designer, 
+              Hi, I&apos;m Husnain — the creative mind behind Brand Grid. As the founder and lead designer, 
               I manage every project with a focus on high-converting Amazon listing images, A+ content, 
               and brand visuals.
             </p>
@@ -81,7 +81,7 @@ export default function AboutPage() {
             <h2 className="text-2xl font-semibold">Shahbaz Khan</h2>
             <p className="text-pink-600 mb-4">Lead Developer</p>
             <p className="text-gray-700 leading-relaxed">
-              Hi, I’m Shahbaz Khan — the tech backbone of Brand Grid. I specialize in building Shopify stores,
+              Hi, I&apos;m Shahbaz Khan — the tech backbone of Brand Grid. I specialize in building Shopify stores,
               custom e-commerce websites, and scalable solutions.
             </p>
           </motion.div>
@@ -149,7 +149,7 @@ export default function AboutPage() {
               <p>With hands-on experience of working with 50+ Amazon brands globally...</p>
               <p>Some of our best ideas come after midnight...</p>
               <p>From UK-based private labels to US multinational brands...</p>
-              <p>It's not just a culture. It's the rhythm that keeps us creating.</p>
+              <p>It&apos;s not just a culture. It&apos;s the rhythm that keeps us creating.</p>
             </div>
           </div>
 
@@ -178,8 +178,8 @@ export default function AboutPage() {
 
             <div className="mt-6 space-y-5 text-lg leading-relaxed text-gray-700">
               <p>Our Amazon design process is structured, research-driven, and results-focused:</p>
-              <p>Competitor & Market Research – We analyze top-performing listings...</p>
-              <p>Creative EBC & Listing Design – Hero images, infographics, lifestyle visuals...</p>
+              <p>Competitor &amp; Market Research – We analyze top-performing listings...</p>
+              <p>Creative EBC &amp; Listing Design – Hero images, infographics, lifestyle visuals...</p>
               <p>Conversion Optimization – Every design crafted based on buyer psychology...</p>
             </div>
           </div>
