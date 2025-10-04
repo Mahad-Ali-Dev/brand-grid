@@ -119,7 +119,8 @@ export default function Contact() {
 
           <div className="relative">
             <h1 className="text-7xl md:text-8xl font-black mb-6 tracking-tight">
-              <span className="text-white">LET'S</span>
+              <span className="text-white">LET&apos;s</span>
+
               <br />
               <span className="bg-white text-black px-4 py-2 inline-block transform -rotate-2 shadow-2xl">
                 CREATE
@@ -215,7 +216,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-4xl font-black mb-4">MESSAGE SENT!</h3>
                 <p className="text-xl text-gray-600 mb-6">
-                  Thank you for choosing us. We'll get back to you within 24 hours.
+                  Thank you for choosing us. We&apos;ll get back to you within 24 hours.
                 </p>
                 <div className="text-sm text-gray-500">Response time: Usually under 2 hours</div>
               </div>
@@ -226,7 +227,7 @@ export default function Contact() {
                     TELL US ABOUT YOUR
                     <span className="bg-black text-white px-3 py-1 ml-2 inline-block transform rotate-1">PROJECT</span>
                   </h3>
-                  <p className="text-gray-600 text-base">Let's bring your vision to life together</p>
+                  <p className="text-gray-600 text-base">Let&apos;s bring your vision to life together</p>
                 </div>
 
                 <div className="space-y-2">
